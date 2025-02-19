@@ -24,7 +24,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: https://happy-moss-0c04b0803.4.azurestaticapps.net
-          uploadArtifacts: true
+          uploadArtifacts: false
           temporaryPublicStorage: true
 
       - name: Vérifier la présence de index.html
