@@ -1,8 +1,11 @@
 {
     "ci": {
+      "collect": {
+        "url": ["https://happy-moss-0c04b0803.4.azurestaticapps.net/"]
+      },
       "assert": {
         "assertions": {
-          "performance": ["error", { "minScore": 50 }]
+          "performance": ["error", { "minScore": 0.5 }]
         }
       }
     }
