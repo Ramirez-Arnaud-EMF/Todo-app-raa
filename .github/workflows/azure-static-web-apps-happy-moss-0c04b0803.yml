@@ -20,6 +20,13 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: Exécuter Lighthouse sur le build
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: https://happy-moss-0c04b0803.4.azurestaticapps.net
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
       - name: Vérifier la présence de index.html
         run: |
           if [ -f "./src/frontend/index.html" ]; then
@@ -28,6 +35,15 @@ jobs:
             echo "❌ Erreur : index.html n'existe pas!"
             exit 1
           fi
+
+      - name: Vérifier les scores Lighthouse
+        run: |
+          SCORE=$(curl -s https://<votre-site>.azurestaticapps.net | jq '.categories.performance.score')
+          if (( $(echo "$SCORE < 0.8" | bc -l) )); then
+            echo "❌ Score de performance trop bas : $SCORE"
+            exit 1
+          fi
+
 
       - name: Build And Deploy
         id: builddeploy
