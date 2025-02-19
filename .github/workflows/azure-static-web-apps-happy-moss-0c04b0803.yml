@@ -26,6 +26,7 @@ jobs:
           urls: https://happy-moss-0c04b0803.4.azurestaticapps.net
           uploadArtifacts: false
           temporaryPublicStorage: true
+          configPath: './lighthouserc.json'
 
       - name: Vérifier la présence de index.html
         run: |
@@ -35,15 +36,6 @@ jobs:
             echo "❌ Erreur : index.html n'existe pas!"
             exit 1
           fi
-
-      - name: Vérifier les scores Lighthouse
-        run: |
-          SCORE=$(curl -s https://<votre-site>.azurestaticapps.net | jq '.categories.performance.score')
-          if (( $(echo "$SCORE < 0.8" | bc -l) )); then
-            echo "❌ Score de performance trop bas : $SCORE"
-            exit 1
-          fi
-
 
       - name: Build And Deploy
         id: builddeploy
