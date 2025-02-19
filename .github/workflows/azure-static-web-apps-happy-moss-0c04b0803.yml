@@ -20,6 +20,9 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: Pause pour laisser le site démarrer
+        run: sleep 30s
+
       - name: Exécuter Lighthouse sur le build
         uses: treosh/lighthouse-ci-action@v9
         with:
