@@ -8,3 +8,5 @@ This sample application requires the following to be installed/enabled on your m
 
  
 test
+
+test 2
