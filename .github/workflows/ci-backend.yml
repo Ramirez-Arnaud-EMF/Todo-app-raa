@@ -28,8 +28,8 @@ jobs:
 
       - name: tag image
         run: |
-          docker tag $IMAGE_NAME $REG_NAME/c213-emf/$IMAGE_NAME:gia
+          docker tag $IMAGE_NAME $REG_NAME/c213-emf/$IMAGE_NAME:raa
 
       - name: push image 
         run: |
-          docker push $REG_NAME/c213-emf/$IMAGE_NAME:gia
+          docker push $REG_NAME/c213-emf/$IMAGE_NAME:raa
