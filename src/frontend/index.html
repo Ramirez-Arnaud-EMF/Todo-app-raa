@@ -10,15 +10,18 @@
   <style>
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: repeating-linear-gradient(45deg, red, yellow 10%, blue 20%);
-      animation: bgFlash 0.5s infinite alternate;
       color: lime;
       text-align: center;
+      min-height: 100vh;
+      margin: 0;
+      animation: textBlink 0.5s infinite alternate;
     }
-    @keyframes bgFlash {
-      from { background-color: magenta; }
-      to { background-color: cyan; }
+
+    @keyframes textBlink {
+      from { opacity: 1; }
+      to { opacity: 0; }
     }
+
     .app-container {
       background: #ff0;
       padding: 20px;
@@ -28,21 +31,20 @@
       max-width: 400px;
       text-align: center;
       animation: rotate 2s linear infinite;
+      margin: auto;
     }
+
     @keyframes rotate {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+
     h1 {
       font-size: 3rem;
       color: red;
       text-shadow: 2px 2px 10px yellow;
-      animation: textBlink 0.5s infinite alternate;
     }
-    @keyframes textBlink {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
+
     button {
       background: lime;
       color: purple;
@@ -50,22 +52,85 @@
       border: 5px dotted red;
       cursor: pointer;
       animation: buttonPulse 0.3s infinite alternate;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: transform 0.2s ease;
     }
+
     @keyframes buttonPulse {
       from { transform: scale(1); }
       to { transform: scale(1.3); }
     }
+
     #todo-list li {
       background: pink;
       color: blue;
       font-size: 1.5rem;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
       animation: listShake 0.5s infinite alternate;
     }
+
     @keyframes listShake {
       from { transform: translateX(-5px); }
       to { transform: translateX(5px); }
     }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 2px solid red;
+      margin-right: 10px;
+      width: 70%;
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      border-color: lime;
+    }
+
+    img {
+      width: 100%; /* Ajuste la largeur de l'image pour qu'elle occupe toute la largeur disponible */
+      height: auto; /* Assure que l'image garde ses proportions */
+      border-radius: 5px;
+      margin-top: 20px;
+    }
   </style>
+  <script>
+    let images = [
+      "./images/img1 (1).jpg", "./images/img1 (2).jpg", "./images/img1 (3).jpg", "./images/img1 (4).jpg",
+      "./images/img1 (5).jpg", "./images/img1 (6).jpg", "./images/img1 (7).jpg", "./images/img1 (8).jpg",
+      "./images/img1 (9).jpg", "./images/img1 (10).jpg", "./images/img1 (11).jpg", "./images/img1 (12).jpg",
+      "./images/img1 (13).jpg", "./images/img1 (14).jpg", "./images/img1 (15).jpg", "./images/img1 (16).jpg",
+      "./images/img1 (17).jpg", "./images/img1 (18).jpg", "./images/img1 (19).jpg", "./images/img1 (20).jpg",
+      "./images/img1 (21).jpg", "./images/img1 (22).jpg", "./images/img1 (23).jpg", "./images/img1 (24).jpg",
+      "./images/img1 (25).jpg", "./images/img1 (26).jpg", "./images/img1 (27).jpg", "./images/img1 (28).jpg",
+      "./images/img1 (29).jpg", "./images/img1 (30).jpg", "./images/img1 (31).jpg", "./images/img1 (32).jpg",
+      "./images/img1 (33).jpg", "./images/img1 (34).jpg", "./images/img1 (35).jpg", "./images/img1 (36).jpg",
+      "./images/img1 (37).jpg", "./images/img1 (38).jpg", "./images/img1 (39).jpg", "./images/img1 (40).jpg",
+      "./images/img1 (41).jpg", "./images/img1 (42).jpg", "./images/img1 (43).jpg", "./images/img1 (44).jpg",
+      "./images/img1 (45).jpg", "./images/img1 (46).jpg", "./images/img1 (47).jpg", "./images/img1 (48).jpg",
+      "./images/img1 (49).jpg", "./images/img1 (50).jpg", "./images/img1 (51).jpg", "./images/img1 (52).jpg",
+      "./images/img1 (53).jpg", "./images/img1 (54).jpg", "./images/img1 (55).jpg", "./images/img1 (56).jpg",
+      "./images/img1 (57).jpg", "./images/img1 (58).jpg"
+    ];
+
+    setInterval(() => {
+      let randomIndex = Math.floor(Math.random() * images.length);
+      let imageUrl = images[randomIndex];
+      console.log("Image choisie :", imageUrl);
+
+      // Créer une balise img pour l'affichage de l'image
+      const img = document.querySelector("#random-image");
+      img.src = imageUrl;  // Mettre la source de l'image à l'URL choisie
+    }, 1000);
+  </script>
 </head>
 <body>
   <div class="app-container">
@@ -75,6 +140,8 @@
       <button type="submit">ADD</button>
     </form>
     <ul id="todo-list"></ul>
+    <!-- Image ajoutée ici -->
+    <img id="random-image" alt="Random Image">
   </div>
 </body>
 </html>
