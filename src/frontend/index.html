@@ -3,17 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo App with Backend a</title>
+  <title>Ugly Todo App</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="app.js" defer></script>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: repeating-linear-gradient(45deg, red, yellow 10%, blue 20%);
+      animation: bgFlash 0.5s infinite alternate;
+      color: lime;
+      text-align: center;
+    }
+    @keyframes bgFlash {
+      from { background-color: magenta; }
+      to { background-color: cyan; }
+    }
+    .app-container {
+      background: #ff0;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: rotate 2s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    h1 {
+      font-size: 3rem;
+      color: red;
+      text-shadow: 2px 2px 10px yellow;
+      animation: textBlink 0.5s infinite alternate;
+    }
+    @keyframes textBlink {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    button {
+      background: lime;
+      color: purple;
+      font-size: 1.5rem;
+      border: 5px dotted red;
+      cursor: pointer;
+      animation: buttonPulse 0.3s infinite alternate;
+    }
+    @keyframes buttonPulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.3); }
+    }
+    #todo-list li {
+      background: pink;
+      color: blue;
+      font-size: 1.5rem;
+      animation: listShake 0.5s infinite alternate;
+    }
+    @keyframes listShake {
+      from { transform: translateX(-5px); }
+      to { transform: translateX(5px); }
+    }
+  </style>
 </head>
 <body>
   <div class="app-container">
-    <h1>Todo App is cool</h1>
+    <h1>Todo App is UGLY</h1>
     <form id="todo-form">
       <input type="text" id="todo-input" placeholder="Add a new task" required>
-      <button type="submit">Add</button>
+      <button type="submit">ADD</button>
     </form>
     <ul id="todo-list"></ul>
   </div>
